@@ -1,31 +1,43 @@
 # EE-551-Project
-# Introduction
+## Introduction
 Python Project for EE-551
 
 Author: Frank Lenge
-# Purposal
+## Purposal
 Project: Simple Math Game 
 
 Info: The goal of this project is to create a simple math game in Python.
 
-# Completed
-Levels:
+## Completed
+### Levels: 
+-Each level emphasises a mathmatical operation by asking 10 questions
 
--Addition 
+-Addition: 10 addition problems
 
--Subtraction
+-Subtraction: 10 subtraction problems
 
--Multiplication
+-Multiplication: 10 multiplication problems
 
--Division
+-Division: 10 division problems
 
--Exit
+-Exit: Player will win once they complete all levels
 
-Player:
+-Quit: Implemented to exit the game if they dont want to complete all the levels 
 
--Life counter
+-Hallway: Used in order to exit a level
 
-# To Do:
+-Conditions: Passing a level will update the key and return player to the level select and Failing a level will tell the player that they need to work on the level's math operation and return to the level select
+
+### Player:
+-Name: Gets player name to use throughout the game
+
+-Life counter: If 3 or more questions are wrong then player will fail the level
+
+-Status Screen: type 'status' on level select, tells which rooms the player has completed
+
+-Time Trials: in status menu youu will see time it took to complete a level
+
+## To Do:
 Have a set of levels based on different math concepts
 Possible levels being: 
 
@@ -34,8 +46,3 @@ Possible levels being:
 -Cross Product
 
 -Summations
-
-Implement a Status Screen
-
-Time Attack/ Time trial to see how quickly you can do each area
-
