@@ -20,11 +20,11 @@ Info: The goal of this project is to create a simple math game in Python.
 
 -Division: 10 division problems
 
--Exit: Player will win once they complete all levels
+-Exit: Player will win once they complete all levels otherwise will tell the player to complete all the levels.
 
 -Quit: Implemented to exit the game if they dont want to complete all the levels 
 
--Hallway: Used in order to exit a level
+-Hallway: Used in order to exit a level and return to the level select
 
 -Conditions: Passing a level will update the key and return player to the level select and Failing a level will tell the player that they need to work on the level's math operation and return to the level select
 
@@ -35,7 +35,7 @@ Info: The goal of this project is to create a simple math game in Python.
 
 -Status Screen: type 'status' on level select, tells which rooms the player has completed
 
--Time Trials: in status menu youu will see time it took to complete a level
+-Time Trials: in status menu you will see time it took to complete a level
 
 ## To Do:
 Have a set of levels based on different math concepts
