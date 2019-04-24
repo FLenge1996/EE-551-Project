@@ -8,7 +8,7 @@ Project: Simple Math Game
 
 Info: The goal of this project is to create a simple math game in Python.
 
-#Completed
+# Completed
 Levels:
 
 -Addition 
