@@ -8,19 +8,34 @@ Project: Simple Math Game
 
 Info: The goal of this project is to create a simple math game in Python.
 
-# Goals:
+#Completed
+Levels:
+
+-Addition 
+
+-Subtraction
+
+-Multiplication
+
+-Division
+
+-Exit
+
+Player:
+
+-Life counter
+
+# To Do:
 Have a set of levels based on different math concepts
 Possible levels being: 
 
--Addition/Subtraction
+-Dot Product
 
--Multiplication/Division
-
--Dot/Cross Products
+-Cross Product
 
 -Summations
 
-Have a Score based on the time it takes to answer the question and the difficulty of the question. 
+Implement a Status Screen
 
-Implement a life counter for how many times a player can get something wrong before losing. 
+Time Attack/ Time trial to see how quickly you can do each area
 
