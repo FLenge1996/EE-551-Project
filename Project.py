@@ -2,7 +2,7 @@
 # Frank Lenge 
 # EE-551: Python
 # Project
-
+import time
 
 class Player(object):
 	def __init__(self):
@@ -13,13 +13,14 @@ class Player(object):
 		self.subkey = False
 		self.mulkey = False
 		self.divkey = False
+		self.addtime = 99999
+		self.subtime = 99999
+		self.multime = 99999
+		self.divtime = 99999
 
 	def resetlife(self):
 		self.life = 3
 		self.Pass = False
-
-	def correct(self):
-		self.life = self.life
 
 	def incorrect(self):
 		self.life -= 1 
@@ -52,11 +53,58 @@ def main():
 		levelsel()
 
 	def win():
-		print("Congratulations " + player.name +", you have won!")
+		EndGame = time.time()
+		Gametime = EndGame - GameStart 
+		print("\nCongratulations " + player.name +", you have completed the test in " + '{0:0.2f}'.format(Gametime) + " seconds.\n" )
+		timestatus()
 		exit(0)
+
+	def timestatus():
+		if player.addtime == 99999:
+			print("\nYou have not completed the Addition Room")
+		else:
+			print("\nThe fastest you have completed the Addition Room was " + '{0:0.2f}'.format(player.addtime) + " seconds.")
+		
+		if player.subtime == 99999:
+			print("You have not completed the Subtraction Room")
+		else:
+			print("The fastest you have completed the Subtraction Room was " + '{0:0.2f}'.format(player.subtime) + " seconds.")
+		
+		if player.multime == 99999:
+			print("You have not completed the Multiplication Room")
+		else:
+			print("The fastest you have completed the Multiplication Room was " + '{0:0.2f}'.format(player.multime) + " seconds.")
+		
+		if player.divtime == 99999:
+			print("You have not completed the Division Room\n")
+		else:
+			print("The fastest you have completed the Division Room was " + '{0:0.2f}'.format(player.divtime) + " seconds.\n")
+
+		if player.addtime == 99999 or player.subtime == 99999 or player.multime == 99999 or player.divtime == 99999:
+			pass
+		else:
+			total_time = player.addtime + player.subtime + player.multime + player.divtime
+			print("Sum of Best Times: " + '{0:0.2f}'.format(total_time) + " seconds.\n")
+
+	def status():
+		if player.addkey & player.subkey & player.mulkey & player.divkey:
+			print("\nYou have all of the keys!")
+			timestatus()
+		else:
+			if player.addkey:
+				print("\nYou have the Addition Key!")
+			if player.subkey:
+				print("You have the Subtraction Key!")
+			if player.mulkey:
+				print("You have the Multiplication Key!")
+			if player.divkey:
+				print("You have the Division Key!")
+			timestatus()
 
 	def levelsel():
 		print("In the hallway you see doors labeled: Addition, Subtraction, Multiplication, Division, and Exit.")
+		print("\nTo see which rooms you have completed type status")
+		print("To quit the test without finishing type quit")
 		level = input("\nWhich door will you pick? \n")
 
     	# Pick a door and we go to a room and something else happens
@@ -75,13 +123,19 @@ def main():
 				print("\nYou need all of the keys before you can exit.\n")
 				levelsel()
 		elif level.lower() == "quit":
+			print("Goodbye")
 			exit(0)
+		elif level.lower() == "status":
+			status()
+			levelsel()
 		else:
 			print("\nPlease pick one of the doors.\n")
 			levelsel()
 
 	#Rooms#
 	def addition():
+
+		begin = time.time()
 
 		player.resetlife()
 
@@ -97,7 +151,6 @@ def main():
 			answer = input("What is " + questionkey[i] + "?\n")
 
 			if answer == str(answerkey[i]):
-				player.correct()
 				print("That is correct. \n")
 			elif answer.lower() == "quit":
 				exit(0)
@@ -112,12 +165,18 @@ def main():
 
 		if player.Pass:
 			player.addkey = True
-			print("Congratulations you have completed the Addition room.\n")
+			end = time.time()
+			addtime = end - begin
+			if addtime <= player.addtime:
+				player.addtime = addtime
+
+			print("Congratulations you have completed the Addition room in " + '{0:0.2f}'.format(addtime) + " seconds.\n")
 			levelsel()
 		else:
 			failed("addition")
 
 	def subtraction():
+		begin = time.time()
 		player.resetlife()
 
 		questionkey = {1:"1-1", 2:"9-4", 3:"15-8", 4:"85-36", 5:"124-83", 6:"527-286", 7:"1593-964", 8:"9-15", 9:"27-85", 10:"167-671"}
@@ -132,7 +191,6 @@ def main():
 			answer = input("What is " + questionkey[i] + "?\n")
 
 			if answer == str(answerkey[i]):
-				player.correct()
 				print("That is correct.\n")
 			elif answer.lower() == "quit":
 				exit(0)
@@ -147,12 +205,18 @@ def main():
 
 		if player.Pass:
 			player.subkey = True
-			print("Congratulations you have completed the Subtraction room.\n")
+			end = time.time()
+			subtime = end - begin
+			if subtime <= player.subtime:
+				player.subtime = subtime
+
+			print("Congratulations you have completed the Subtraction room in " + '{0:0.2f}'.format(subtime) + " seconds.\n")
 			levelsel()
 		else:
 			failed("subtraction")
 
 	def multiplication():
+		begin = time.time()
 		player.resetlife()
 
 		questionkey = {1:"1*1", 2:"5*4", 3:"6*9", 4:"12*5", 5:"8*19", 6:"21*7", 7:"23*12", 8:"64*15", 9:"125*21", 10:"543*128"}
@@ -167,7 +231,6 @@ def main():
 			answer = input("What is " + questionkey[i] + "?\n")
 
 			if answer == str(answerkey[i]):
-				player.correct()
 				print("That is correct.\n")
 			elif answer.lower() == "quit":
 				exit(0)
@@ -182,12 +245,18 @@ def main():
 
 		if player.Pass:
 			player.mulkey = True
-			print("Congratulations you have completed the Multiplication room.\n")
+			end = time.time()
+			multime = end - begin
+			if multime <= player.multime:
+				player.multime = multime
+
+			print("Congratulations you have completed the Multiplication room in " + '{0:0.2f}'.format(multime) + " seconds.\n")
 			levelsel()
 		else:
 			failed("multiplication")
 
 	def division():
+		begin = time.time()
 		player.resetlife()
 
 		questionkey = {1:"1/1", 2:"16/4", 3:"36/9", 4:"325/5", 5:"162/18", 6:"192/24", 7:"288/12", 8:"490/35", 9:"546/26", 10:"1376/43"}
@@ -202,7 +271,6 @@ def main():
 			answer = input("What is " + questionkey[i] + "?\n")
 
 			if answer == str(answerkey[i]):
-				player.correct()
 				print("That is correct.\n")
 			elif answer.lower() == "quit":
 				exit(0)
@@ -217,25 +285,28 @@ def main():
 
 		if player.Pass:
 			player.divkey = True
-			print("Congratulations you have completed the Division room.\n")
+			end = time.time()
+			divtime = end - begin
+			if divtime <= player.divtime:
+				player.divtime = divtime
+
+			print("Congratulations you have completed the Division room in " + '{0:0.2f}'.format(divtime) + " seconds.\n")
 			levelsel()
 		else:
 			failed("division")
 
-
+	GameStart =  time.time()
 	print("Hello and welcome to my project.")
 
 	player = Player()
 	player.get_name()
-
-	print("\nHello, " + player.name + " today I will be testing your math skills in the form of a fun game")
+	
+	print("\nHello " + player.name + ", today I will be testing your math skills in the form of a fun game")
 	print("You will find yourself in a corridor with many doors. Each door will have a mathmatical operation on it. By entering each room and solving 10 corresponding equations you will recieve a key. Get all the keys and you can exit the hallway. Be careful not to get 3 incorrect answer for any given room.")
-	print("\nTo quit without finishing the test type quit anywhere.")
 	print("\nGood luck and have fun!")
 	print("\nSuddenly you realize that you are in a corridor with many doors.\n")
     
 	levelsel()
-
 
 if __name__ == "__main__":
 	main()
