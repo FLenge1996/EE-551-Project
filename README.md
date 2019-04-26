@@ -37,12 +37,22 @@ Info: The goal of this project is to create a simple math game in Python.
 
 -Time Trials: in status menu you will see time it took to complete a level
 
+### Tests:
+-Test incorrect answers
+
+-Test Player life resets
+
+-Test if player has passed level when less then 3 incorrect answers
+
+-Test if player has passed level when more then 3 incorrect answers
+
 ## To Do:
-Have a set of levels based on different math concepts
-Possible levels being: 
+-Have a set of levels based on different math concepts
 
--Dot Product
+Possible levels being: I have deemed these levels to be too difficult for a simple math game such as this 
 
--Cross Product
+- ~~Dot Product~~
 
--Summations
+- ~~Cross Product~~
+
+- ~~Summations~~
