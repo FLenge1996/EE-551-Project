@@ -75,7 +75,7 @@ def testpassissuccessafterfail():
 	assert (player.life == -1)
 	assert(player.Pass == False)
 
-	player.reset()
+	player.resetlife()
 	player.incorrect()
 	player.incorrect()
 	player.issuccess()
@@ -95,7 +95,7 @@ def testfailissuccessafterfail():
 	assert (player.life == -1)
 	assert(player.Pass == False)
 
-	player.reset()
+	player.resetlife()
 	player.incorrect()
 	player.incorrect()
 	player.incorrect()
@@ -106,7 +106,7 @@ def testfailissuccessafterfail():
 	assert(player.Pass == False)
 
 #Test reset after passing level
-def testfailissuccessafterfail():
+def testresetissuccessafterpass():
 	player = Player()
 	player.incorrect()
 	player.incorrect()
@@ -115,7 +115,7 @@ def testfailissuccessafterfail():
 	assert (player.life == 1)
 	assert(player.Pass == True)
 
-	player.reset()
+	player.resetlife()
 
 	assert (player.life == 3)
 	assert(player.Pass == False)
